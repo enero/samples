@@ -33,7 +33,7 @@
     });
 
     // Подготовка массива данных
-    $postImages = $('.postCont a.lightbox');
+    $postImages = $('.post-item__content a.lightbox');
     if ($postImages.length) {
         // Старый формат
         imageItems = [].slice.call($postImages).map(function ($image, index) {
@@ -44,7 +44,7 @@
         });
     } else {
         // Новый формат
-        $postImages = $('.postCont img');
+        $postImages = $('.post-item__content img');
         imageItems = [].slice.call($postImages).map(function ($image, index) {
             return {
                 index: index,
@@ -83,21 +83,20 @@
     }
 
     function initCurrentImage(items, src) {
-        var curIndex = 0,
-	    i;
+        var i;
 
-	for (i = 0; i < items.length; i++) {
-		if ((items[i].src === src || items[i].src.indexOf(src) !== -1)) {
-			curIndex = i;
-			break;
-		}
-	}
-	
+        for (i = 0; i < items.length; i++) {
+            if ((items[i].src === src || items[i].src.indexOf(src) !== -1)) {
+                curIndex = i;
+                break;
+            }
+        }
+
         showModal($modal, items, curIndex);
     }
 
     // Old
-    $('.postCont .lightbox').click(function(e) {
+    $('.post-item__content .lightbox').click(function(e) {
         e.preventDefault();
         e.stopImmediatePropagation();
 
@@ -105,7 +104,7 @@
     });
 
     // New, img only
-    $('.postCont img.fr-fic').click(function (e) {
+    $('.post-item__content img.fr-fic').click(function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
 
@@ -113,7 +112,7 @@
     });
 
     // New, span with img
-    $('.postCont .fr-img-wrap').click(function (e) {
+    $('.post-item__content .fr-img-wrap').click(function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
 
@@ -138,7 +137,7 @@
         showModal($modal, imageItems, curIndex);
     });
 
-    // Показать следующее изображение
+    // Показать слледующее изображение
     $arrowRight.click(function (e) {
         e.preventDefault();
         e.stopPropagation();
